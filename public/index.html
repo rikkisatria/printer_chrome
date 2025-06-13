@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Print Demo</title>
+</head>
+<body>
+  <h1>Cetak ke Printer Thermal</h1>
+  <button onclick="printText()">Print</button>
+
+  <script>
+    function printText() {
+      fetch('/print', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: "Halo Dunia!\nTerima kasih!\n\n" })
+      })
+      .then(res => res.json())
+      .then(data => alert("Sukses mencetak!"))
+      .catch(err => alert("Gagal: " + err.message));
+    }
+  </script>
+</body>
+</html>
